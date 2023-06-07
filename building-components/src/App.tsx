@@ -1,4 +1,5 @@
 import Alert from "./components/Alert";
+import Button from "./components/Button";
 import ListGroup from "./components/ListGroup";
 
 function App() {
@@ -17,6 +18,10 @@ function App() {
         items={listData}
         onSelectItem={handleSelectItem}
       />
+      <div className="d-flex justify-content-between mt-3 px-3">
+        <Button variant="secondary">Prev</Button>
+        <Button onClick={() => console.log("Next page rendred")}>Next</Button>
+      </div>
     </>
   );
 }
