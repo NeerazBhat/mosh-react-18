@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 interface ListGroupProps {
   title: string;
   items: string[];
+  onSelectItem: (item: string) => void;
 }
 
-const ListGroup = ({ title, items }: ListGroupProps) => {
+const ListGroup = ({ title, items, onSelectItem }: ListGroupProps) => {
   const [activeList, setActiveList] = useState(-1);
 
   return (
@@ -18,8 +19,11 @@ const ListGroup = ({ title, items }: ListGroupProps) => {
           {items.map((item, idx) => (
             <li
               key={idx}
-              className={`list-group-item ${activeList === idx && 'active'}`}
-              onClick={() => setActiveList(idx)}
+              className={`list-group-item ${activeList === idx && "active"}`}
+              onClick={() => {
+                setActiveList(idx);
+                onSelectItem(item);
+              }}
             >
               {item}
             </li>

@@ -1,11 +1,18 @@
-import ListGroup from './components/ListGroup';
+import ListGroup from "./components/ListGroup";
 
 function App() {
-  const listData = ['Nepal', 'India', 'China'];
+  const listData = ["Nepal", "India", "China"];
+  const handleSelectItem = (item: string) => {
+    console.log(item);
+  };
 
   return (
     <>
-      <ListGroup title="Country List" items={listData} />
+      <ListGroup
+        title="Country List"
+        items={listData}
+        onSelectItem={handleSelectItem}
+      />
     </>
   );
 }
