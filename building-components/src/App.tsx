@@ -1,3 +1,4 @@
+import Alert from "./components/Alert";
 import ListGroup from "./components/ListGroup";
 
 function App() {
@@ -8,6 +9,9 @@ function App() {
 
   return (
     <>
+      <Alert>
+        Hello <span className="fw-bold">World</span>
+      </Alert>
       <ListGroup
         title="Country List"
         items={listData}
