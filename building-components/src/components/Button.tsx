@@ -3,7 +3,13 @@ import { ReactNode } from "react";
 interface ButtonProps {
   children: ReactNode;
   className?: string;
-  variant?: "primary" | "secondary" | "danger" | "warning" | "light";
+  variant?:
+    | "primary"
+    | "secondary"
+    | "danger"
+    | "warning"
+    | "light"
+    | "success";
   onClick?: () => void;
 }
 
