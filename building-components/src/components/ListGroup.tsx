@@ -11,7 +11,7 @@ const ListGroup = ({ title, items, onSelectItem }: ListGroupProps) => {
 
   return (
     <>
-      <h1>{title}</h1>
+      <h3>{title}</h3>
       {items.length === 0 ? (
         <p>No data found</p>
       ) : (
