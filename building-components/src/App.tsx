@@ -2,9 +2,13 @@ import { useState } from "react";
 import Alert from "./components/Alert";
 import Button from "./components/Button";
 import ListGroup from "./components/ListGroup";
+import Navbar from "./components/Navbar";
+import Cart from "./components/Cart";
 
 function App() {
   const [showAlert, setShowAlert] = useState(false);
+  const [cartItems, setCartItems] = useState(["Mouse", "Laptop"]);
+
   const listData = ["Nepal", "India", "China"];
   const handleSelectItem = (item: string) => {
     console.log(item);
@@ -12,6 +16,8 @@ function App() {
 
   return (
     <main className="p-3">
+      <Navbar cartItemsCount={cartItems.length} />
+      <Cart cartItems={cartItems} onClear={() => setCartItems([])} />
       {showAlert && (
         <Alert onClose={() => setShowAlert(false)}>
           Hello <span className="fw-bold">World</span>
