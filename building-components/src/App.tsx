@@ -2,6 +2,8 @@ import { useState } from "react";
 import Alert from "./components/Alert";
 import Button from "./components/Button";
 import ListGroup from "./components/ListGroup";
+import Message from "./components/Message";
+import ManageComponentState from "./components/ManageComponentState";
 
 function App() {
   const [showAlert, setShowAlert] = useState(false);
@@ -33,6 +35,12 @@ function App() {
         <Button variant="secondary">Prev</Button>
         <Button onClick={() => console.log("Next page rendred")}>Next</Button>
       </div>
+      <div className="message-list">
+        <Message />
+        <Message />
+        <Message />
+      </div>
+      <ManageComponentState />
     </main>
   );
 }
