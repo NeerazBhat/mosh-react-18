@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 import { produce } from "immer";
+import ExpandableText from "./ExpandableText";
 
 const ManageStateExercise = () => {
   const [game, setGame] = useState({
@@ -104,6 +105,8 @@ const ManageStateExercise = () => {
           Add Quantity
         </Button>
       </div>
+
+      <ExpandableText>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit repellat ab sequi quasi iste facilis quod eos aperiam. Quas possimus dignissimos dolorem numquam expedita asperiores dolor optio, maiores, alias voluptatum ratione aspernatur consectetur quaerat quis id laborum, reiciendis magni veritatis consequatur ipsa? Repudiandae voluptatem nam officiis eos illum! Ullam, est!</ExpandableText>
     </>
   );
 };
