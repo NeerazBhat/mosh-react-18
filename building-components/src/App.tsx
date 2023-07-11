@@ -3,6 +3,7 @@ import Alert from "./components/Alert";
 import Button from "./components/Button";
 import ListGroup from "./components/ListGroup";
 import { AiFillLike } from "react-icons/ai";
+import Form from "./components/Form";
 
 function App() {
   const [showAlert, setShowAlert] = useState(false);
@@ -18,41 +19,44 @@ function App() {
   };
 
   return (
-    <main className="p-3">
-      {showAlert && (
-        <Alert onClose={() => setShowAlert(false)}>
-          Hello <span className="fw-bold">World</span>
-        </Alert>
-      )}
-      <ListGroup
-        title="Country List"
-        items={listData}
-        onSelectItem={handleSelectItem}
-      />
-      <Button
-        variant="warning"
-        className="mt-3"
-        onClick={() => setShowAlert(true)}
-      >
-        Toggle Alert
-      </Button>
-      <div className="d-flex justify-content-between mt-3">
-        <Button variant="secondary">Prev</Button>
-        <Button onClick={() => console.log("Next page rendred")}>Next</Button>
-      </div>
-      <div className="d-flex justify-content-end">
+    <>
+      <main className="p-3 d-none">
+        {showAlert && (
+          <Alert onClose={() => setShowAlert(false)}>
+            Hello <span className="fw-bold">World</span>
+          </Alert>
+        )}
+        <ListGroup
+          title="Country List"
+          items={listData}
+          onSelectItem={handleSelectItem}
+        />
         <Button
-          variant="light"
-          className={`mt-4 d-flex align-items-center gap-2 ${
-            showLike && "bg-dark text-white"
-          } `}
-          onClick={handleShowLike}
+          variant="warning"
+          className="mt-3"
+          onClick={() => setShowAlert(true)}
         >
-          {showLike ? "Liked" : "Like"}
-          <AiFillLike color={showLike && "tomato"} />
+          Toggle Alert
         </Button>
-      </div>
-    </main>
+        <div className="d-flex justify-content-between mt-3">
+          <Button variant="secondary">Prev</Button>
+          <Button onClick={() => console.log("Next page rendred")}>Next</Button>
+        </div>
+        <div className="d-flex justify-content-end">
+          <Button
+            variant="light"
+            className={`mt-4 d-flex align-items-center gap-2 ${
+              showLike && "bg-dark text-white"
+            } `}
+            onClick={handleShowLike}
+          >
+            {showLike ? "Liked" : "Like"}
+            <AiFillLike color={showLike && "tomato"} />
+          </Button>
+        </div>
+      </main>
+      <Form />
+    </>
   );
 }
 

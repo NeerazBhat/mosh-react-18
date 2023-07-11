@@ -11,6 +11,7 @@ interface ButtonProps {
     | "light"
     | "success";
   onClick?: () => void;
+  type?: "reset" | "submit";
 }
 
 const Button = ({
@@ -18,9 +19,14 @@ const Button = ({
   children,
   className,
   onClick,
+  type,
 }: ButtonProps) => {
   return (
-    <button className={`btn btn-${variant} ${className}`} onClick={onClick}>
+    <button
+      className={`btn btn-${variant} ${className}`}
+      onClick={onClick}
+      type={type}
+    >
       {children}
     </button>
   );
