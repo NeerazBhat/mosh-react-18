@@ -1,5 +1,10 @@
 import Button from "./Button";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
+
+interface IFormDate {
+  name: string;
+  age: number;
+}
 
 const Form = () => {
   //   const [person, setPerson] = useState({
@@ -22,7 +27,11 @@ const Form = () => {
   //     console.log(person);
   //   };
 
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormDate>();
   const onSubmit = (data: FieldValues) => console.log(data);
 
   return (
@@ -37,13 +46,19 @@ const Form = () => {
         </label>
         <input
           //   ref={nameRef}
-          {...register("name")}
+          {...register("name", { required: true, minLength: 4 })}
           type="text"
           className="form-control"
           id="name"
           //   onChange={(e) => setPerson({ ...person, name: e.target.value })}
           //   value={person.name}
         />
+        {errors.name?.type === "required" && (
+          <p className="text-danger">Please enter the name here</p>
+        )}
+        {errors.name?.type === "minLength" && (
+          <p className="text-danger">Enter more than 3 letter</p>
+        )}
       </div>
       <div className="form-group mb-3">
         <label htmlFor="age" className="mb-1">
