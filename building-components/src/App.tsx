@@ -3,11 +3,22 @@ import Alert from "./components/Alert";
 import Button from "./components/Button";
 import ListGroup from "./components/ListGroup";
 import { AiFillLike } from "react-icons/ai";
-import Form from "./components/Form";
+import { ExpenseList } from "./expense-tracker/components/ExpenseList";
+import FilterExpense from "./expense-tracker/components/FilterExpense";
+// import Form from "./components/Form";
 
 function App() {
   const [showAlert, setShowAlert] = useState(false);
   const [showLike, setShowLike] = useState(false);
+
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const [expenses, setExpenses] = useState([
+    { id: 1, description: "Ram", amount: 4, category: "Nepal" },
+    { id: 2, description: "Sachin", amount: 6, category: "India" },
+    { id: 3, description: "David", amount: 3, category: "Nepal" },
+    { id: 4, description: "Chang", amount: 5, category: "China" },
+  ]);
 
   const listData = ["Nepal", "India", "China"];
   const handleSelectItem = (item: string) => {
@@ -17,6 +28,14 @@ function App() {
   const handleShowLike = () => {
     setShowLike(!showLike);
   };
+
+  const handleDelete = (id: number) => {
+    setExpenses(expenses.filter((e) => e.id !== id));
+  };
+
+  const visibleExpenses = selectedCategory
+    ? expenses.filter((expense) => expense.category === selectedCategory)
+    : expenses;
 
   return (
     <>
@@ -55,7 +74,15 @@ function App() {
           </Button>
         </div>
       </main>
-      <Form />
+      {/* <Form /> */}
+      <div className="expense-tracker p-3">
+        <div className="mb-3">
+          <FilterExpense
+            onSelectCategory={(category) => setSelectedCategory(category)}
+          />
+        </div>
+        <ExpenseList expenses={visibleExpenses} onDelete={handleDelete} />
+      </div>
     </>
   );
 }
