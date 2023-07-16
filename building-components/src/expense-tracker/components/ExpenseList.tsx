@@ -3,7 +3,7 @@ import Button from "../../components/Button";
 interface IExpenses {
   id: number;
   description: string;
-  amount: number;
+  amount: string;
   category: string;
 }
 
@@ -44,7 +44,7 @@ export const ExpenseList = ({ expenses, onDelete }: IExpenseList) => {
           <td>
             $
             {expenses
-              .reduce((acc, expense) => expense.amount + acc, 0)
+              .reduce((acc, expense) => parseInt(expense.amount) + acc, 0)
               .toFixed(2)}
           </td>
           <td></td>

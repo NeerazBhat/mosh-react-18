@@ -1,7 +1,7 @@
 import { FieldValues, useForm } from "react-hook-form";
 import Button from "./Button";
 
-const ExpenceForm = () => {
+const ExpenceForms = () => {
   const {
     register,
     handleSubmit,
@@ -51,4 +51,4 @@ const ExpenceForm = () => {
   );
 };
 
-export default ExpenceForm;
+export default ExpenceForms;

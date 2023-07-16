@@ -5,6 +5,7 @@ import ListGroup from "./components/ListGroup";
 import { AiFillLike } from "react-icons/ai";
 import { ExpenseList } from "./expense-tracker/components/ExpenseList";
 import FilterExpense from "./expense-tracker/components/FilterExpense";
+import ExpenseForm from "./expense-tracker/components/ExpenseForm";
 // import Form from "./components/Form";
 
 function App() {
@@ -14,10 +15,10 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
 
   const [expenses, setExpenses] = useState([
-    { id: 1, description: "Ram", amount: 4, category: "Nepal" },
-    { id: 2, description: "Sachin", amount: 6, category: "India" },
-    { id: 3, description: "David", amount: 3, category: "Nepal" },
-    { id: 4, description: "Chang", amount: 5, category: "China" },
+    { id: 1, description: "Ram", amount: "4", category: "Nepal" },
+    { id: 2, description: "Sachin", amount: "6", category: "India" },
+    { id: 3, description: "David", amount: "3", category: "Nepal" },
+    { id: 4, description: "Chang", amount: "5", category: "China" },
   ]);
 
   const listData = ["Nepal", "India", "China"];
@@ -76,6 +77,16 @@ function App() {
       </main>
       {/* <Form /> */}
       <div className="expense-tracker p-3">
+        <div className="mb-3">
+          <ExpenseForm
+            onSubmit={(newExpense) =>
+              setExpenses([
+                ...expenses,
+                { ...newExpense, id: expenses.length + 1 },
+              ])
+            }
+          />
+        </div>
         <div className="mb-3">
           <FilterExpense
             onSelectCategory={(category) => setSelectedCategory(category)}
