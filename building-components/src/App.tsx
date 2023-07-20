@@ -1,57 +1,28 @@
 import { useState } from "react";
-import Alert from "./components/Alert";
-import Button from "./components/Button";
-import ListGroup from "./components/ListGroup";
-import { AiFillLike } from "react-icons/ai";
+import ProductList from "./components/ProductList";
 
 function App() {
-  const [showAlert, setShowAlert] = useState(false);
-  const [showLike, setShowLike] = useState(false);
+  // const inputRef = useRef<HTMLInputElement>(null);
 
-  const listData = ["Nepal", "India", "China"];
-  const handleSelectItem = (item: string) => {
-    console.log(item);
-  };
+  //afterRender
+  // useEffect(() => {
+  //   if (inputRef.current) inputRef.current.focus();
+  // });
 
-  const handleShowLike = () => {
-    setShowLike(!showLike);
-  };
+  const [category, setCategory] = useState('');
 
   return (
     <main className="p-3">
-      {showAlert && (
-        <Alert onClose={() => setShowAlert(false)}>
-          Hello <span className="fw-bold">World</span>
-        </Alert>
-      )}
-      <ListGroup
-        title="Country List"
-        items={listData}
-        onSelectItem={handleSelectItem}
-      />
-      <Button
-        variant="warning"
-        className="mt-3"
-        onClick={() => setShowAlert(true)}
+      {/* <input ref={inputRef} type="text" className="form-control" /> */}
+      <select
+        className="form-select"
+        onChange={(e) => setCategory(e.target.value)}
       >
-        Toggle Alert
-      </Button>
-      <div className="d-flex justify-content-between mt-3">
-        <Button variant="secondary">Prev</Button>
-        <Button onClick={() => console.log("Next page rendred")}>Next</Button>
-      </div>
-      <div className="d-flex justify-content-end">
-        <Button
-          variant="light"
-          className={`mt-4 d-flex align-items-center gap-2 ${
-            showLike && "bg-dark text-white"
-          } `}
-          onClick={handleShowLike}
-        >
-          {showLike ? "Liked" : "Like"}
-          <AiFillLike color={showLike && "tomato"} />
-        </Button>
-      </div>
+        <option value=""></option>
+        <option value="City">City</option>
+        <option value="Town">Town</option>
+      </select>
+      <ProductList category={category}/>
     </main>
   );
 }
